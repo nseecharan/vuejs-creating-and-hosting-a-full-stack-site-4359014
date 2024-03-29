@@ -7,6 +7,19 @@ import ProductsPage from "./pages/ProductsPage.vue";
 import ProductDetailPage from "./pages/ProductDetailPage.vue";
 import NotFoundPage from "./pages/NotFoundPage.vue";
 
+import { initializeApp } from "firebase/app";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCwTSzrp3GkI9o_GqCZHzJdvtWjlH-jFHY",
+  authDomain: "vue-site-d3138.firebaseapp.com",
+  projectId: "vue-site-d3138",
+  storageBucket: "vue-site-d3138.appspot.com",
+  messagingSenderId: "919366038685",
+  appId: "1:919366038685:web:b4b2883f771305e0421074"
+};
+
+initializeApp(firebaseConfig);
+
 createApp(App)
   .use(
     VueRouter.createRouter({
