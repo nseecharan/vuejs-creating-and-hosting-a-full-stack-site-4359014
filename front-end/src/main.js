@@ -15,7 +15,7 @@ const firebaseConfig = {
   projectId: "vue-site-d3138",
   storageBucket: "vue-site-d3138.appspot.com",
   messagingSenderId: "919366038685",
-  appId: "1:919366038685:web:b4b2883f771305e0421074"
+  appId: "1:919366038685:web:b4b2883f771305e0421074",
 };
 
 initializeApp(firebaseConfig);
@@ -36,6 +36,10 @@ createApp(App)
         {
           path: "/products/:productId",
           component: ProductDetailPage,
+        },
+        {
+          path: "/",
+          redirect: "/products",
         },
         {
           path: "/:pathMatch(.*)*",

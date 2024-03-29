@@ -73,7 +73,7 @@ export default {
       const email = prompt("Please enter your email to sign in");
       const auth = getAuth();
       const actionCodeSettings = {
-        url: `https://scaling-halibut-wgv7x45qxq6hv4v9-8080.app.github.dev/products/${this.$route.params.productId}`,
+        url: `https://ns-full-stack-vue-project-2024.onrender.com/products/${this.$route.params.productId}`,
         handleCodeInApp: true,
       };
       await sendSignInLinkToEmail(auth, email, actionCodeSettings);

@@ -3,13 +3,21 @@ import { MongoClient } from "mongodb";
 import path from "path";
 
 async function start() {
-  const url = `mongodb+srv://developernseecharan:<ENTER PASSWORD HERE>@vueprojectdb.weokxvj.mongodb.net/?retryWrites=true&w=majority&appName=vueProjectDB`;
+
+  const url = `mongodb+srv://developernseecharan:${process.env.PASS}@vueprojectdb.weokxvj.mongodb.net/?retryWrites=true&w=majority&appName=vueProjectDB`;
   const client = new MongoClient(url);
 
   const app = express();
   app.use(express.json());
 
   app.use("/images", express.static(path.join(__dirname, "../assets")));
+
+  app.use(
+    express.static(path.resolve(__dirname, "../dist"), {
+      maxAge: "1y",
+      etag: false,
+    })
+  );
 
   await client.connect();
   const db = client.db("fsv-db");
@@ -81,8 +89,14 @@ async function start() {
     res.json(populatedCart);
   });
 
-  app.listen(8000, () => {
-    console.log("Server is listening on port 8000");
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../dist/index.html"));
+  });
+
+  const port = process.env.PORT || 8000;
+
+  app.listen(port, () => {
+    console.log("Server is listening on port " + port);
   });
 }
 
