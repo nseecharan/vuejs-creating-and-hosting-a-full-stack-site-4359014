@@ -3,6 +3,7 @@ import { MongoClient } from "mongodb";
 import path from "path";
 
 async function start() {
+
   const url = `mongodb+srv://developernseecharan:${process.env.PASS}@vueprojectdb.weokxvj.mongodb.net/?retryWrites=true&w=majority&appName=vueProjectDB`;
   const client = new MongoClient(url);
 
